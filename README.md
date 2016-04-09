@@ -5,9 +5,12 @@ Traditional DNS queries and responses are sent over UDP or TCP without encryptio
 
 To address this problem, Google Public DNS offers DNS resolution over an encrypted HTTPS connection. DNS-over-HTTPS greatly enhances privacy and security between a client and a recursive resolver, and complements DNSSEC to provide end-to-end authenticated DNS lookups.
 
+More info at <https://developers.google.com/speed/public-dns/docs/dns-over-https>.
+
 The following functions are implemented:
 
--   `query` : perform the DNS query
+-   `query` : perform Google DNS query for a single host (retreives metadata & answer)
+-   `bulk_query` : perform bulk host queries, returning a of only answers (no metadata)
 
 ### News
 
@@ -36,7 +39,7 @@ library(gdns)
 library(testthat)
 
 date()
-#> [1] "Sat Apr  9 17:16:13 2016"
+#> [1] "Sat Apr  9 17:24:33 2016"
 
 test_dir("tests/")
 #> testthat results ========================================================================================================
@@ -49,17 +52,19 @@ library(purrr)
 #> 
 #>     is_null
 
-hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com")
-results <- map(hosts, gdns::query)
-map_df(results, "Answer")
-#> Source: local data frame [4 x 4]
+hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
+gdns::bulk_query(hosts)
+#> Source: local data frame [7 x 4]
 #> 
 #>             name  type   TTL            data
 #>            (chr) (int) (int)           (chr)
-#> 1        rud.is.     1   823 104.236.112.222
-#> 2        dds.ec.     1   204   162.243.111.4
-#> 3 r-project.org.     1   927   137.208.57.37
-#> 4   rstudio.com.     1  3386    45.79.156.36
+#> 1        rud.is.     1  3599 104.236.112.222
+#> 2        dds.ec.     1   299   162.243.111.4
+#> 3 r-project.org.     1  6462   137.208.57.37
+#> 4   rstudio.com.     1  3599    45.79.156.36
+#> 5     apple.com.     1  2866   17.172.224.47
+#> 6     apple.com.     1  2866    17.178.96.59
+#> 7     apple.com.     1  2866   17.142.160.59
 ```
 
 ### Code of Conduct

@@ -20,9 +20,12 @@ Traditional DNS queries and responses are sent over UDP or TCP without encryptio
 
 To address this problem, Google Public DNS offers DNS resolution over an encrypted HTTPS connection. DNS-over-HTTPS greatly enhances privacy and security between a client and a recursive resolver, and complements DNSSEC to provide end-to-end authenticated DNS lookups.
 
+More info at <https://developers.google.com/speed/public-dns/docs/dns-over-https>.
+
 The following functions are implemented:
 
-- `query` : perform the DNS query
+- `query` : perform Google DNS query for a single host (retreives metadata & answer)
+- `bulk_query` : perform bulk host queries, returning a \code{data.frame} of only answers (no metadata)
 
 ### News
 
@@ -60,9 +63,8 @@ test_dir("tests/")
 
 library(purrr)
 
-hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com")
-results <- map(hosts, gdns::query)
-map_df(results, "Answer")
+hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
+gdns::bulk_query(hosts)
 ```
 
 ### Code of Conduct

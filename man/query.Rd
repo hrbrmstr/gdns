@@ -41,7 +41,14 @@ encrypted HTTPS connection. DNS-over-HTTPS greatly enhances privacy and
 security between a client and a recursive resolver, and complements DNSSEC
 to provide end-to-end authenticated DNS lookups.
 }
+\details{
+To perform vectorized queries with only answers (and no metadata) use
+\code{bulk_query()}).
+}
 \examples{
 query("rud.is")
+}
+\references{
+\url{https://developers.google.com/speed/public-dns/docs/dns-over-https}
 }
 
