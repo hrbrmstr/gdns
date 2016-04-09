@@ -17,5 +17,5 @@
 #' @author Bob Rudis (@@hrbrmstr)
 #' @import httr
 #' @importFrom jsonlite fromJSON
-#' @importFrom purrr safely
+#' @importFrom purrr safely map map_df
 NULL

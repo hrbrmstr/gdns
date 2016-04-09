@@ -61,8 +61,6 @@ date()
 
 test_dir("tests/")
 
-library(purrr)
-
 hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
 gdns::bulk_query(hosts)
 ```
