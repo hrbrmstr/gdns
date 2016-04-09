@@ -1,0 +1,67 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+`gdns` : Tools to work with the Google DNS over HTTPS API
+
+The following functions are implemented:
+
+- `query` : perform the DNS query
+
+### News
+
+- Version 0.1.0.9000 released
+
+### Installation
+
+```{r eval=FALSE}
+devtools::install_github("hrbrmstr/gdns")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+options(width=120)
+```
+
+### Usage
+
+```{r}
+library(gdns)
+
+# current verison
+packageVersion("gdns")
+
+```
+
+### Test Results
+
+```{r}
+library(gdns)
+library(testthat)
+
+date()
+
+test_dir("tests/")
+
+library(purrr)
+
+hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com")
+results <- map(hosts, gdns::query)
+map_df(results, "Answer")
+```
+
+### Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). 
+By participating in this project you agree to abide by its terms.

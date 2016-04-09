@@ -1,8 +1,18 @@
 Package: gdns
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
+Title: Tools to Work with Google DNS Over https API
+Version: 0.1.0.9000
 Authors@R: c(person("Bob", "Rudis", email = "bob@rudis.net", role = c("aut", "cre")))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.2.4)
+Maintainer: Bob Rudis <bob@rudis.net>
+Description: Tools to Work with Google DNS Over https API
 License: AGPL + file LICENSE
 LazyData: true
+Encoding: UTF-8
+Depends:
+    R (>= 3.0.0)
+Suggests:
+    testthat
+Imports:
+    httr,
+    jsonlite,
+    purrr
+RoxygenNote: 5.0.1
