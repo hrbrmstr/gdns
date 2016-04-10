@@ -1,4 +1,7 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/gdns.svg?branch=master)](https://travis-ci.org/hrbrmstr/gdns)
+
 `gdns` : Tools to work with the Google DNS over HTTPS API
 
 Traditional DNS queries and responses are sent over UDP or TCP without encryption. This is vulnerable to eavesdropping and spoofing (including DNS-based Internet filtering). Responses from recursive resolvers to clients are the most vulnerable to undesired or malicious changes, while communications between recursive resolvers and authoritative nameservers often incorporate additional protection.
@@ -39,7 +42,7 @@ library(gdns)
 library(testthat)
 
 date()
-#> [1] "Sat Apr  9 20:19:06 2016"
+#> [1] "Sat Apr  9 21:17:02 2016"
 
 test_dir("tests/")
 #> testthat results ========================================================================================================
@@ -52,13 +55,13 @@ gdns::bulk_query(hosts)
 #> 
 #>             name  type   TTL            data
 #>            (chr) (int) (int)           (chr)
-#> 1        rud.is.     1  3599 104.236.112.222
-#> 2        dds.ec.     1   284   162.243.111.4
-#> 3 r-project.org.     1  7146   137.208.57.37
-#> 4   rstudio.com.     1  3599    45.79.156.36
-#> 5     apple.com.     1  3172   17.172.224.47
-#> 6     apple.com.     1  3172    17.178.96.59
-#> 7     apple.com.     1  3172   17.142.160.59
+#> 1        rud.is.     1   710 104.236.112.222
+#> 2        dds.ec.     1   280   162.243.111.4
+#> 3 r-project.org.     1  6410   137.208.57.37
+#> 4   rstudio.com.     1    71    45.79.156.36
+#> 5     apple.com.     1  3290   17.172.224.47
+#> 6     apple.com.     1  3290    17.178.96.59
+#> 7     apple.com.     1  3290   17.142.160.59
 ```
 
 ### Code of Conduct

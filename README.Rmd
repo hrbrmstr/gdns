@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: rmarkdown::github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -13,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
+[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/gdns.svg?branch=master)](https://travis-ci.org/hrbrmstr/gdns)
 
 `gdns` : Tools to work with the Google DNS over HTTPS API
 
