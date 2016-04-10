@@ -39,25 +39,26 @@ library(gdns)
 library(testthat)
 
 date()
-#> [1] "Sat Apr  9 17:28:00 2016"
+#> [1] "Sat Apr  9 20:19:06 2016"
 
 test_dir("tests/")
 #> testthat results ========================================================================================================
-#> OK: 0 SKIPPED: 0 FAILED: 0
+#> OK: 2 SKIPPED: 0 FAILED: 0
 
 hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
+
 gdns::bulk_query(hosts)
 #> Source: local data frame [7 x 4]
 #> 
 #>             name  type   TTL            data
 #>            (chr) (int) (int)           (chr)
-#> 1        rud.is.     1  2345 104.236.112.222
-#> 2        dds.ec.     1   299   162.243.111.4
-#> 3 r-project.org.     1   220   137.208.57.37
-#> 4   rstudio.com.     1  3392    45.79.156.36
-#> 5     apple.com.     1  2656   17.142.160.59
-#> 6     apple.com.     1  2656   17.172.224.47
-#> 7     apple.com.     1  2656    17.178.96.59
+#> 1        rud.is.     1  3599 104.236.112.222
+#> 2        dds.ec.     1   284   162.243.111.4
+#> 3 r-project.org.     1  7146   137.208.57.37
+#> 4   rstudio.com.     1  3599    45.79.156.36
+#> 5     apple.com.     1  3172   17.172.224.47
+#> 6     apple.com.     1  3172    17.178.96.59
+#> 7     apple.com.     1  3172   17.142.160.59
 ```
 
 ### Code of Conduct
