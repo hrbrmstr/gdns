@@ -4,13 +4,13 @@
 \alias{query}
 \title{Perform DNS over HTTPS queries using Google}
 \usage{
-query(name, type = "1", cd = FALSE, edns_client_subnet = NULL)
+query(name, type = "1", edns_client_subnet = NULL)
 }
 \arguments{
 \item{name}{item to lookup. Valid characters are numbers, letters, hyphen, and dot. Length
 must be between 1 and 255. Names with escaped or non-ASCII characters
 are not supported. Internationalized domain names must use the
-punycode format (e.g. "\code{xn--qxam}" rather than "\code{ελ}")}
+punycode format (e.g. "\code{xn--qxam}").}
 
 \item{type}{RR type can be represented as a number in [1, 65535] or canonical
 string (A, aaaa, etc.)}

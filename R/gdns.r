@@ -20,7 +20,7 @@ S_GET <- purrr::safely(GET)
 #' @param name item to lookup. Valid characters are numbers, letters, hyphen, and dot. Length
 #'        must be between 1 and 255. Names with escaped or non-ASCII characters
 #'        are not supported. Internationalized domain names must use the
-#'        punycode format (e.g. "\code{xn--qxam}" rather than "\code{ελ}")
+#'        punycode format (e.g. "\code{xn--qxam}").
 #' @param type RR type can be represented as a number in [1, 65535] or canonical
 #'        string (A, aaaa, etc.)
 #' @param edns_client_subnet The edns0-client-subnet option. Format is an IP
@@ -37,7 +37,7 @@ S_GET <- purrr::safely(GET)
 #' @export
 #' @examples
 #' query("rud.is")
-query <- function(name, type="1", cd=FALSE, edns_client_subnet=NULL) {
+query <- function(name, type="1", edns_client_subnet=NULL) {
 
   res <- S_GET("https://dns.google.com/resolve",
                query=list(name=name,
