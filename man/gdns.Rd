@@ -16,7 +16,9 @@ often incorporate additional protection.\cr
 To address this problem, Google Public DNS offers DNS resolution over an
 encrypted HTTPS connection. DNS-over-HTTPS greatly enhances privacy and
 security between a client and a recursive resolver, and complements DNSSEC
-to provide end-to-end authenticated DNS lookups.#'
+to provide end-to-end authenticated DNS lookups.\cr
+\cr
+Support for reverse lookups is also provided.
 }
 \author{
 Bob Rudis (@hrbrmstr)

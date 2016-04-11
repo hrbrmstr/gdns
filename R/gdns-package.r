@@ -10,12 +10,16 @@
 #' To address this problem, Google Public DNS offers DNS resolution over an
 #' encrypted HTTPS connection. DNS-over-HTTPS greatly enhances privacy and
 #' security between a client and a recursive resolver, and complements DNSSEC
-#' to provide end-to-end authenticated DNS lookups.#'
+#' to provide end-to-end authenticated DNS lookups.\cr
+#' \cr
+#' Support for reverse lookups is also provided.
 #'
 #' @name gdns
 #' @docType package
 #' @author Bob Rudis (@@hrbrmstr)
 #' @import httr
+#' @importFrom stringi stri_split_fixed stri_split_regex stri_trim
+#'                     stri_replace_all_regex stri_enc_toutf8
 #' @importFrom jsonlite fromJSON
-#' @importFrom purrr safely map map_df
+#' @importFrom purrr safely map map_df %||%
 NULL

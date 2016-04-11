@@ -1,6 +1,6 @@
 Package: gdns
 Title: Tools to Work with Google DNS Over HTTPS API
-Version: 0.1.0.9000
+Version: 0.2.0.9000
 Authors@R: c(person("Bob", "Rudis", email = "bob@rudis.net", role = c("aut", "cre")))
 Maintainer: Bob Rudis <bob@rudis.net>
 Description: To address the problem of insecurity of UDP-based DNS requests,
@@ -9,7 +9,8 @@ Description: To address the problem of insecurity of UDP-based DNS requests,
     between a client and a recursive resolver, and complements DNSSEC
     to provide end-to-end authenticated DNS lookups. Functions that enable
     querying individual requests that bulk requests that return detailed
-    responses and bulk requests are both provided.
+    responses and bulk requests are both provided. Support for reverse
+    lookups is also provided.
 License: AGPL + file LICENSE
 LazyData: true
 Encoding: UTF-8
@@ -20,5 +21,6 @@ Suggests:
 Imports:
     httr,
     jsonlite,
-    purrr
+    purrr,
+    stringi
 RoxygenNote: 5.0.1

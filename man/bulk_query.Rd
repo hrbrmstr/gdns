@@ -4,16 +4,23 @@
 \alias{bulk_query}
 \title{Vectorized query, returning only answers in a data frame}
 \usage{
-bulk_query(hosts)
+bulk_query(hosts, type = 1)
 }
 \arguments{
 \item{hosts}{character vector of hosts to query}
+
+\item{type}{RR type (see \code{type} in \code{query()}).}
 }
 \value{
 \code{data.frame} of only answers (use \code{query()} for detailed responses)
 }
 \description{
 Vectorized query, returning only answers in a data frame
+}
+\note{
+this is a fairly naive function. It expects \code{Answer} to be one of the
+      return value list slots. The intent for it was to make it easier
+      to do bulk forward queries. It will get smarter in future versions.
 }
 \examples{
 hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")

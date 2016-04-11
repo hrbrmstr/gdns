@@ -4,16 +4,19 @@
 \alias{query}
 \title{Perform DNS over HTTPS queries using Google}
 \usage{
-query(name, type = "1", edns_client_subnet = NULL)
+query(name, type = "1", edns_client_subnet = "0.0.0.0/0")
 }
 \arguments{
 \item{name}{item to lookup. Valid characters are numbers, letters, hyphen, and dot. Length
 must be between 1 and 255. Names with escaped or non-ASCII characters
 are not supported. Internationalized domain names must use the
-punycode format (e.g. "\code{xn--qxam}").}
+punycode format (e.g. "\code{xn--qxam}").\cr
+\cr If an IPv4 string is input, it will be transformed into
+a proper format for reverse lookups.}
 
 \item{type}{RR type can be represented as a number in [1, 65535] or canonical
-string (A, aaaa, etc.)}
+string (A, aaaa, etc). More information on RR types can be
+found \href{http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4}{here}.}
 
 \item{edns_client_subnet}{The edns0-client-subnet option. Format is an IP
 address with a subnet mask. Examples: \code{1.2.3.4/24},
@@ -23,7 +26,7 @@ not want any part of your IP address to be sent to authoritative
 nameservers for geographic location accuracy, use
 \code{edns_client_subnet=0.0.0.0/0}. Google Public DNS normally sends
 approximate network information (usually replacing the last part of
-your IPv4 address with zeroes).}
+your IPv4 address with zeroes). \code{0.0.0.0/0} is the default.}
 }
 \value{
 a \code{list} with the query result or \code{NULL} if an error occurred
@@ -47,6 +50,10 @@ To perform vectorized queries with only answers (and no metadata) use
 }
 \examples{
 query("rud.is")
+query("microsoft.com", "MX")
+query("google-public-dns-a.google.com", "TXT")
+query("apple.com")
+query("17.142.160.59", "PTR")
 }
 \references{
 \url{https://developers.google.com/speed/public-dns/docs/dns-over-https}

@@ -23,11 +23,22 @@ More info at <https://developers.google.com/speed/public-dns/docs/dns-over-https
 
 The following functions are implemented:
 
-- `query` : perform Google DNS query for a single host (retreives metadata & answer)
-- `bulk_query` : perform bulk host queries, returning a \code{data.frame} of only answers (no metadata)
+- `bulk_query`:	Vectorized query, returning only answers in a data frame
+- `has_spf`:	Test for whether a DNS TXT record is an SPF record
+- `is_hard_fail`:	SPF "all" type test
+- `is_soft_fail`:	SPF "all" type test
+- `passes_all`:	SPF "all" type test
+- `query`:	Perform DNS over HTTPS queries using Google
+- `spf_exists`:	SPF field extraction functions
+- `spf_includes`:	SPF field extraction functions
+- `spf_ipv4s`:	SPF field extraction functions
+- `spf_ipv6s`:	SPF field extraction functions
+- `spf_ptrs`:	SPF field extraction functions
+- `split_spf`:	Split out all SPF records in a domain's TXT record
 
 ### News
 
+- Version 0.2.0.9000 SPF stuff
 - Version 0.1.0.9000 released
 
 ### Installation
@@ -60,9 +71,19 @@ date()
 
 test_dir("tests/")
 
-hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
+query("rud.is")
 
+query("microsoft.com", "MX")
+
+query("google-public-dns-a.google.com", "TXT")
+
+query("apple.com")
+
+query("17.142.160.59", "PTR")
+
+hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
 gdns::bulk_query(hosts)
+
 ```
 
 ### Code of Conduct
