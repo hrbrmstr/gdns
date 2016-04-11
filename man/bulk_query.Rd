@@ -4,12 +4,24 @@
 \alias{bulk_query}
 \title{Vectorized query, returning only answers in a data frame}
 \usage{
-bulk_query(hosts, type = 1)
+bulk_query(entities, type = 1, edns_client_subnet = "0.0.0.0/0")
 }
 \arguments{
-\item{hosts}{character vector of hosts to query}
+\item{entities}{character vector of entities to query}
 
-\item{type}{RR type (see \code{type} in \code{query()}).}
+\item{type}{RR type can be represented as a number in [1, 65535] or canonical
+string (A, aaaa, etc). More information on RR types can be
+found \href{http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4}{here}.}
+
+\item{edns_client_subnet}{The edns0-client-subnet option. Format is an IP
+address with a subnet mask. Examples: \code{1.2.3.4/24},
+\code{2001:700:300::/48}.\cr
+If you are using DNS-over-HTTPS because of privacy concerns, and do
+not want any part of your IP address to be sent to authoritative
+nameservers for geographic location accuracy, use
+\code{edns_client_subnet=0.0.0.0/0}. Google Public DNS normally sends
+approximate network information (usually replacing the last part of
+your IPv4 address with zeroes). \code{0.0.0.0/0} is the default.}
 }
 \value{
 \code{data.frame} of only answers (use \code{query()} for detailed responses)
