@@ -18,7 +18,10 @@ spf_ptrs(spf_rec)
 
 spf_exists(spf_rec)
 }
+\arguments{
+\item{spf_rec}{a character vector of DNS TXT records}
+}
 \description{
-SPF field extraction functions
+Various helper functions to extract SPF record components.
 }
 

@@ -68,6 +68,8 @@ passes_all <- function(spf_rec) {
 
 #' SPF field extraction functions
 #'
+#' Various helper functions to extract SPF record components.
+#'
 #' @param spf_rec a character vector of DNS TXT records
 #' @export
 spf_ipv4s <- function(spf_rec) {
