@@ -68,6 +68,7 @@ passes_all <- function(spf_rec) {
 
 #' SPF field extraction functions
 #'
+#' @param spf_rec a character vector of DNS TXT records
 #' @export
 spf_ipv4s <- function(spf_rec) {
   purrr::map(split_spf(spf_rec), function(x) {
