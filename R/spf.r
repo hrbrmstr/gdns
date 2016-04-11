@@ -61,7 +61,7 @@ passes_all <- function(spf_rec) {
   ret <- vector("logical", length(spf_rec))
   spf_rec <- stringi::stri_trim(stringi::stri_replace_all_regex(spf_rec, '"', ""))
   SPF <- which(has_spf(spf_rec))
-  ret[SPF] <- grepl("\\+all$", stringi::stri_trim(spf_rec[SPF]))
+  ret[SPF] <- grepl("[\\+ ]all$", stringi::stri_trim(spf_rec[SPF]))
   ret[!SPF] <- NA
   ret
 }
