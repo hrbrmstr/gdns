@@ -36,11 +36,6 @@ The following functions are implemented:
 - `spf_ptrs`:	SPF field extraction functions
 - `split_spf`:	Split out all SPF records in a domain's TXT record
 
-### News
-
-- Version 0.2.0.9000 SPF stuff
-- Version 0.1.0.9000 released
-
 ### Installation
 
 ```{r eval=FALSE}
@@ -59,19 +54,9 @@ library(gdns)
 # current verison
 packageVersion("gdns")
 
-```
-
-### Test Results
-
-```{r}
-library(gdns)
-library(testthat)
-
-date()
-
-test_dir("tests/")
-
 query("rud.is")
+
+query("example.com", "255") # "ANY" query
 
 query("microsoft.com", "MX")
 
@@ -83,7 +68,17 @@ query("17.142.160.59", "PTR")
 
 hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
 gdns::bulk_query(hosts)
+```
 
+### Test Results
+
+```{r}
+library(gdns)
+library(testthat)
+
+date()
+
+test_dir("tests/")
 ```
 
 ### Code of Conduct

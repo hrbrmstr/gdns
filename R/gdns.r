@@ -29,6 +29,7 @@ S_GET <- purrr::safely(GET)
 #' @param type RR type can be represented as a number in [1, 65535] or canonical
 #'        string (A, aaaa, etc). More information on RR types can be
 #'        found \href{http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4}{here}.
+#'        You can use \code{255} for an \code{ANY} query.
 #' @param edns_client_subnet The edns0-client-subnet option. Format is an IP
 #'        address with a subnet mask. Examples: \code{1.2.3.4/24},
 #'        \code{2001:700:300::/48}.\cr
@@ -43,6 +44,7 @@ S_GET <- purrr::safely(GET)
 #' @export
 #' @examples
 #' query("rud.is")
+#' query("example.com", "255") # ANY query
 #' query("microsoft.com", "MX")
 #' query("google-public-dns-a.google.com", "TXT")
 #' query("apple.com")

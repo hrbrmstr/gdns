@@ -1,8 +1,8 @@
 Package: gdns
 Title: Tools to Work with Google DNS Over HTTPS API
-Version: 0.2.0.9000
-Authors@R: c(person("Bob", "Rudis", email = "bob@rudis.net", role = c("aut", "cre")))
-Maintainer: Bob Rudis <bob@rudis.net>
+Version: 0.2.0
+Authors@R: c(person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")))
+Maintainer: Bob Rudis <bob@rud.is>
 Description: To address the problem of insecurity of UDP-based DNS requests,
     Google Public DNS offers DNS resolution over an encrypted HTTPS
     connection. DNS-over-HTTPS greatly enhances privacy and security

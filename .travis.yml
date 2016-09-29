@@ -1,3 +1,14 @@
-language: r
-warnings_are_errors: true
-sudo: required
+language: R
+
+sudo: false
+
+cache: packages
+
+os:
+  - linux
+  - osx
+
+r:
+  - oldrel
+  - release
+  - devel
