@@ -4,7 +4,7 @@
 \name{gdns}
 \alias{gdns}
 \alias{gdns-package}
-\title{Tools to Work with Google DNS Over https API}
+\title{Tools to Work with Google DNS Over HTTPS API}
 \description{
 Traditional DNS queries and responses are sent over UDP or TCP without
 encryption. This is vulnerable to eavesdropping and spoofing (including
@@ -21,6 +21,6 @@ to provide end-to-end authenticated DNS lookups.\cr
 Support for reverse lookups is also provided.
 }
 \author{
-Bob Rudis (@hrbrmstr)
+Bob Rudis (bob@rud.is)
 }
 

@@ -1,4 +1,4 @@
-#' Tools to Work with Google DNS Over https API
+#' Tools to Work with Google DNS Over HTTPS API
 #'
 #' Traditional DNS queries and responses are sent over UDP or TCP without
 #' encryption. This is vulnerable to eavesdropping and spoofing (including
@@ -16,7 +16,7 @@
 #'
 #' @name gdns
 #' @docType package
-#' @author Bob Rudis (@@hrbrmstr)
+#' @author Bob Rudis (bob@@rud.is)
 #' @import httr
 #' @importFrom stringi stri_split_fixed stri_split_regex stri_trim
 #'                     stri_replace_all_regex stri_enc_toutf8
