@@ -15,3 +15,5 @@
 This is a new release, so there are no reverse dependencies.
 
 ---
+
+Added URL ref in DESCRIPTION per note from Kurt (#ty!)
