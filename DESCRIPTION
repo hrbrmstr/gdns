@@ -10,7 +10,8 @@ Description: To address the problem of insecurity of UDP-based DNS requests,
     to provide end-to-end authenticated DNS lookups. Functions that enable
     querying individual requests that bulk requests that return detailed
     responses and bulk requests are both provided. Support for reverse
-    lookups is also provided.
+    lookups is also provided. See <https://developers.google.com/speed/public-dns/docs/dns-over-https> 
+    for more information.
 License: AGPL + file LICENSE
 LazyData: true
 Encoding: UTF-8

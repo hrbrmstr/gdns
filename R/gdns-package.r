@@ -12,7 +12,10 @@
 #' security between a client and a recursive resolver, and complements DNSSEC
 #' to provide end-to-end authenticated DNS lookups.\cr
 #' \cr
-#' Support for reverse lookups is also provided.
+#' Support for reverse lookups is also provided.\cr
+#' \cr
+#' See \url{https://developers.google.com/speed/public-dns/docs/dns-over-https}
+#' for more information.
 #'
 #' @name gdns
 #' @docType package
