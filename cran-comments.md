@@ -1,7 +1,7 @@
 ## Test environments
 * local OS X install, R 3.4.0
 * ubuntu 12.04 (on travis-ci), R 3.4.0 & oldrel
-* win-builder (devel and release) 
+* win-builder (devel and release) https://win-builder.r-project.org/8Ls4z6cqTVpg/00check.log
 
 ## R CMD check results
 
