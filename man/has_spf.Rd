@@ -12,4 +12,3 @@ has_spf(spf_rec)
 \description{
 Test for whether a DNS TXT record is an SPF record
 }
-

@@ -12,7 +12,6 @@ split_spf(spf_rec)
 \description{
 Given a vector of TXT records, this function will return a list of vectors
 of all the SPF records for each. If the given TXT record is not an SPF
-record, \code{NULL} is returned (which makes it easy to skip with \code{purrr}
+record, \code{NA} is returned (which makes it easy to skip with \code{purrr}
 functions).
 }
-

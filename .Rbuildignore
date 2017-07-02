@@ -6,3 +6,4 @@
 ^CONDUCT\.md$
 ^README\.Rmd$
 ^cran-comments\.md$
+^docs$

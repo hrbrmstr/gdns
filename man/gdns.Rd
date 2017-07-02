@@ -26,4 +26,3 @@ for more information.
 \author{
 Bob Rudis (bob@rud.is)
 }
-

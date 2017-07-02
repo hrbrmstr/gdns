@@ -41,4 +41,3 @@ gdns::bulk_query(hosts)
 \references{
 \url{https://developers.google.com/speed/public-dns/docs/dns-over-https}
 }
-

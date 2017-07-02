@@ -1,19 +1,17 @@
 ## Test environments
-* local OS X install, R 3.3.1
-* Travis OS X (R 3.3.1 and oldrel)
-* ubuntu 12.04 (on travis-ci), R 3.3.1 & oldrel
-* win-builder (devel and release) (caught it today just before the crash)
+* local OS X install, R 3.4.0
+* ubuntu 12.04 (on travis-ci), R 3.4.0 & oldrel
+* win-builder (devel and release) 
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note (new pkg)
-
-* This is a new release.
+0 errors | 0 warnings | 1 note (maintainer & acronyms)
 
 ## Reverse dependencies
 
-This is a new release, so there are no reverse dependencies.
+None
 
 ---
 
-Added URL ref in DESCRIPTION per note from Kurt (#ty!)
+* This is an update release to fix CRAN checks due to the crazy way purrr does dplyr ops. This pkg now Imports the necessary dplyr functions.
+* Mis-spelled words aren't mis-spelled. Too many necessary acronyms to use "'" pairs.

@@ -1,6 +1,6 @@
 Package: gdns
 Title: Tools to Work with Google DNS Over HTTPS API
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")))
 Maintainer: Bob Rudis <bob@rud.is>
 Description: To address the problem of insecurity of UDP-based DNS requests,
@@ -23,5 +23,7 @@ Imports:
     httr,
     jsonlite,
     purrr,
-    stringi
-RoxygenNote: 5.0.1
+    stringi,
+    tibble,
+    dplyr
+RoxygenNote: 6.0.1
