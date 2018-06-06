@@ -8,7 +8,7 @@
 #' @param spf_rec a character vector of DNS TXT records
 #' @export
 split_spf <- function(spf_rec) {
-  purrr::map(spf_rec, .split_spf)
+  map(spf_rec, .split_spf)
 }
 
 .split_spf <- function(spf_rec) {
@@ -73,7 +73,7 @@ passes_all <- function(spf_rec) {
 #' @param spf_rec a character vector of DNS TXT records
 #' @export
 spf_ipv4s <- function(spf_rec) {
-  purrr::map(split_spf(spf_rec), function(x) {
+  map(split_spf(spf_rec), function(x) {
     stringi::stri_replace_all_regex(grep("ip4", x, value=TRUE), "^ip4:", "")
   })
 }
@@ -81,7 +81,7 @@ spf_ipv4s <- function(spf_rec) {
 #' @rdname spf_ipv4s
 #' @export
 spf_ipv6s <- function(spf_rec) {
-  purrr::map(split_spf(spf_rec), function(x) {
+  map(split_spf(spf_rec), function(x) {
     stringi::stri_replace_all_regex(grep("ip6", x, value=TRUE), "^ip6:", "")
   })
 }
@@ -89,7 +89,7 @@ spf_ipv6s <- function(spf_rec) {
 #' @rdname spf_ipv4s
 #' @export
 spf_includes <- function(spf_rec) {
-  purrr::map(split_spf(spf_rec), function(x) {
+  map(split_spf(spf_rec), function(x) {
     stringi::stri_replace_all_regex(grep("include", x, value=TRUE), "^include:", "")
   })
 }
@@ -97,7 +97,7 @@ spf_includes <- function(spf_rec) {
 #' @rdname spf_ipv4s
 #' @export
 spf_ptrs <- function(spf_rec) {
-  purrr::map(split_spf(spf_rec), function(x) {
+  map(split_spf(spf_rec), function(x) {
     stringi::stri_replace_all_regex(grep("ptr", x, value=TRUE), "^ptr[:]", "")
   })
 }
@@ -105,7 +105,7 @@ spf_ptrs <- function(spf_rec) {
 #' @rdname spf_ipv4s
 #' @export
 spf_exists <- function(spf_rec) {
-  purrr::map(split_spf(spf_rec), function(x) {
+  map(split_spf(spf_rec), function(x) {
     stringi::stri_replace_all_regex(grep("exists", x, value=TRUE), "^exists:", "")
   })
 }

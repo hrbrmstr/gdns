@@ -25,7 +25,4 @@
 #'                     stri_replace_all_regex stri_enc_toutf8
 #'                     stri_detect_fixed
 #' @importFrom jsonlite fromJSON
-#' @importFrom tibble data_frame
-#' @importFrom purrr safely map map_df %||% %>%
-#' @importFrom dplyr bind_rows bind_cols as_data_frame
 NULL

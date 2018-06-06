@@ -1,7 +1,7 @@
 ipv4_regex <-
   "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
 
-S_GET <- purrr::safely(GET)
+S_GET <- safely(httr::GET)
 
 #' Perform DNS over HTTPS queries using Google
 #'
@@ -57,10 +57,14 @@ query <- function(name, type="1", edns_client_subnet="0.0.0.0/0") {
                    sep="", collapse=".")
   }
 
-  res <- S_GET("https://dns.google.com/resolve",
-               query=list(name=name,
-                          type=type,
-                          edns_client_subnet=edns_client_subnet))
+  res <- S_GET(
+    url = "https://dns.google.com/resolve",
+    query = list(
+      name = name,
+      type = type,
+      edns_client_subnet = edns_client_subnet
+    )
+  )
 
   if (!is.null(res$result)) {
     stop_for_status(res$result)
@@ -100,5 +104,5 @@ query <- function(name, type="1", edns_client_subnet="0.0.0.0/0") {
 #' gdns::bulk_query(hosts)
 bulk_query <- function(entities, type=1, edns_client_subnet="0.0.0.0/0") {
   results <- map(entities, gdns::query, type=type, edns_client_subnet=edns_client_subnet)
-  map_df(results, "Answer")
+  map_df(results, ~.x$Answer)
 }
