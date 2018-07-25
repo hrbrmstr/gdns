@@ -26,3 +26,18 @@
 #'                     stri_detect_fixed
 #' @importFrom jsonlite fromJSON
 NULL
+
+
+#' An overview of resource records (RRs) permissible in zone files of the Domain Name System (DNS)
+#'
+#' A dataset containing the DNS resource record types, names, description and purpose
+#'
+#' @format A data frame with 39 rows and 4 variables:
+#' \describe{
+#'   \item{type}{numeric type of the resource record}
+#'   \item{name}{short name of the resource record}
+#'   \item{description}{short description of the resource record}
+#'   \item{purpose}{long-form description of the resource record purpose/function/usage}
+#' }
+#' @source \url{https://en.wikipedia.org/wiki/List_of_DNS_record_types}
+"resource_record_tbl"

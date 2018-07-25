@@ -6,6 +6,6 @@ test_that("we can do something", {
   doms <- c("example.com", "example.org", "example.net")
   qry <- gdns::bulk_query(doms)
 
-  expect_that(dim(qry), equals(c(3, 4)))
+  expect_that(dim(qry), equals(c(3, 5)))
 
 })

@@ -1,6 +1,8 @@
-# gdns 0.2.2
+# gdns 0.3.0
 
 * removed purrr, dplyr and tibble dependencies
+* `bulk_query()` now returns the original query string in a `query` column
+* added `resource_record_tbl` data frame of DNS RR metadata
 
 # gdns 0.2.1
 
