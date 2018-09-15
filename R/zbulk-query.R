@@ -24,15 +24,29 @@
 #' gdns::bulk_query(hosts)
 bulk_query <- function(entities, type = 1, edns_client_subnet = "0.0.0.0/0") {
 
-  map(
+  lapply(
     entities,
-    gdns::query,
-    type = type,
-    edns_client_subnet = edns_client_subnet
+    query, type = type, edns_client_subnet = edns_client_subnet
   ) -> results
 
-  results <- set_names(results, entities)
+  lapply(seq_along(results), function(idx) {
+    if (length(results[[idx]]$Answer) == 0) {
+      data.frame(
+        entity = entities[idx],
+        name = NA_character_,
+        type = NA_character_,
+        TTL = NA_character_,
+        data = NA_character_,
+        stringsAsFactors = FALSE
+      )
+    } else {
+      results[[idx]]$Answer$entity <- entities[[idx]]
+      results[[idx]]$Answer
+    }
+  }) -> xlst
 
-  map_df(results, ~.x$Answer, .id = "query")
+  xdf <- do.call(rbind.data.frame, xlst)
+  class(xdf) <- c("tbl_df", "tbl", "data.frame")
+  xdf
 
 }

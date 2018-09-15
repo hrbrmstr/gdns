@@ -54,19 +54,20 @@ library(gdns)
 # current verison
 packageVersion("gdns")
 
-query("rud.is")
+str(query("rud.is"))
 
-query("example.com", "255") # "ANY" query
+str(query("example.com", "255")) # "ANY" query
 
-query("microsoft.com", "MX")
+str(query("microsoft.com", "MX"))
 
-query("google-public-dns-a.google.com", "TXT")
+str(query("google-public-dns-a.google.com", "TXT"))
 
-query("apple.com")
+str(query("apple.com"))
 
-query("17.142.160.59", "PTR")
+str(query("17.142.160.59", "PTR"))
 
 hosts <- c("rud.is", "dds.ec", "r-project.org", "rstudio.com", "apple.com")
+
 gdns::bulk_query(hosts)
 ```
 

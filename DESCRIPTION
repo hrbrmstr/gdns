@@ -1,6 +1,6 @@
 Package: gdns
 Title: Tools to Work with Google's 'DNS-over-HTTPS' ('DoH') 'API'
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
         person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
                comment = c(ORCID = "0000-0001-5670-2640"))

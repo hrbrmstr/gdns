@@ -1,3 +1,7 @@
+# gdns 0.3.1
+
+* fixed bug in `bulk_query()`
+
 # gdns 0.3.0
 
 * removed purrr, dplyr and tibble dependencies
