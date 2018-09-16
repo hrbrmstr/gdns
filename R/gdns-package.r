@@ -25,6 +25,7 @@
 #'                     stri_replace_all_regex stri_enc_toutf8
 #'                     stri_detect_fixed
 #' @importFrom jsonlite fromJSON
+#' @importFrom stats terms
 NULL
 
 

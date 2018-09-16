@@ -24,6 +24,7 @@ Suggests:
     testthat
 Imports:
     httr,
+    stats,
     jsonlite,
     stringi
 RoxygenNote: 6.0.1.9000
