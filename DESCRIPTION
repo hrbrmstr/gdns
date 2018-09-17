@@ -15,7 +15,7 @@ Description: To address the problem of insecurity of 'UDP'-based 'DNS' requests,
     responses and bulk requests are both provided. Support for reverse
     lookups is also provided. See <https://developers.google.com/speed/public-dns/docs/dns-over-https> 
     for more information.
-License: AGPL + file LICENSE
+License: AGPL
 LazyData: true
 Encoding: UTF-8
 Depends:
