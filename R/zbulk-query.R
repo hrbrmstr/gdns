@@ -4,6 +4,10 @@
 #' @param type RR type can be represented as a number in [1, 65535] or canonical
 #'        string (A, aaaa, etc). More information on RR types can be
 #'        found \href{http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4}{here}.
+#' @param cd (Checking Disabled) flag. Use `TRUE` to disable DNSSEC validation;
+#'        Default: `FALSE`.
+#' @param do (DNSSEC OK) flag. Use `TRUE` include DNSSEC records (RRSIG, NSEC, NSEC3);
+#'        Default: `FALSE`.
 #' @param edns_client_subnet The edns0-client-subnet option. Format is an IP
 #'        address with a subnet mask. Examples: \code{1.2.3.4/24},
 #'        \code{2001:700:300::/48}.\cr
@@ -22,27 +26,19 @@
 #' @examples
 #' hosts <- c("rud.is", "r-project.org", "rstudio.com", "apple.com")
 #' gdns::bulk_query(hosts)
-bulk_query <- function(entities, type = 1, edns_client_subnet = "0.0.0.0/0") {
+bulk_query <- function(entities, type = 1, cd = FALSE, do = FALSE,
+                       edns_client_subnet = "0.0.0.0/0") {
 
   lapply(
     entities,
-    query, type = type, edns_client_subnet = edns_client_subnet
+    query, type = type, cd = cd,
+    edns_client_subnet = edns_client_subnet
   ) -> results
 
   lapply(seq_along(results), function(idx) {
-    if (length(results[[idx]]$Answer) == 0) {
-      data.frame(
-        entity = entities[idx],
-        name = NA_character_,
-        type = NA_character_,
-        TTL = NA_character_,
-        data = NA_character_,
-        stringsAsFactors = FALSE
-      )
-    } else {
-      results[[idx]]$Answer$entity <- entities[[idx]]
-      results[[idx]]$Answer
-    }
+    res <- as.data.frame(results[[idx]])
+    res$entity <-  entities[[idx]]
+    res
   }) -> xlst
 
   xdf <- do.call(rbind.data.frame, xlst)

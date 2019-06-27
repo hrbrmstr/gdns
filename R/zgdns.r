@@ -30,6 +30,16 @@ S_GET <- safely(httr::GET)
 #'        string (A, aaaa, etc). More information on RR types can be
 #'        found \href{http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4}{here}.
 #'        You can use \code{255} for an \code{ANY} query.
+#' @param cd (Checking Disabled) flag. Use `TRUE` to disable DNSSEC validation;
+#'        Default: `FALSE`.
+#' @param do (DNSSEC OK) flag. Use `TRUE` include DNSSEC records (RRSIG, NSEC, NSEC3);
+#'        Default: `FALSE`.
+#' @param random_padding clients concerned about possible side-channel privacy
+#'        attacks using the packet sizes of HTTPS GET requests can use this to
+#'        make all requests exactly the same size by padding requests with random data.
+#'        To prevent misinterpretation of the URL, restrict the padding characters to
+#'        the unreserved URL characters: upper- and lower-case letters, digits,
+#'        hyphen, period, underscore and tilde.
 #' @param edns_client_subnet The edns0-client-subnet option. Format is an IP
 #'        address with a subnet mask. Examples: \code{1.2.3.4/24},
 #'        \code{2001:700:300::/48}.\cr
@@ -40,16 +50,22 @@ S_GET <- safely(httr::GET)
 #'        approximate network information (usually replacing the last part of
 #'        your IPv4 address with zeroes). \code{0.0.0.0/0} is the default.
 #' @return a \code{list} with the query result or \code{NULL} if an error occurred
-#' @references \url{https://developers.google.com/speed/public-dns/docs/dns-over-https}
+#' @references <https://developers.google.com/speed/public-dns/docs/doh/json>
 #' @export
 #' @examples
 #' query("rud.is")
-#' query("example.com", "255") # ANY query
+#' dig("example.com", "255") # ANY query
 #' query("microsoft.com", "MX")
-#' query("google-public-dns-a.google.com", "TXT")
+#' dig("google-public-dns-a.google.com", "TXT")
 #' query("apple.com")
-#' query("17.142.160.59", "PTR")
-query <- function(name, type="1", edns_client_subnet="0.0.0.0/0") {
+#' dig("17.142.160.59", "PTR")
+query <- function(name, type = "1", cd = FALSE, do = FALSE,
+                  edns_client_subnet = "0.0.0.0/0",
+                  random_padding = NULL) {
+
+  name <- name[1]
+
+  # helper to turn IPv4 addresses in to in-addr.arpa.
 
   if (grepl(ipv4_regex, name)) {
     name <- paste0(c(rev(unlist(stringi::stri_split_fixed(name, ".", 4))),
@@ -58,11 +74,15 @@ query <- function(name, type="1", edns_client_subnet="0.0.0.0/0") {
   }
 
   res <- S_GET(
-    url = "https://dns.google.com/resolve",
+    url = "https://dns.google/resolve",
     query = list(
       name = name,
       type = type,
-      edns_client_subnet = edns_client_subnet
+      cd = if (cd) 1 else 0,
+      do = if (do) 1 else 0,
+      ct = "application/x-javascript",
+      edns_client_subnet = edns_client_subnet,
+      random_padding = random_padding
     )
   )
 
@@ -71,9 +91,15 @@ query <- function(name, type="1", edns_client_subnet="0.0.0.0/0") {
     txt <- httr::content(res$result, as="text")
     txt <- stringi::stri_enc_toascii(txt)
     txt <- stringi::stri_replace_all_regex(txt, "[[:cntrl:][:blank:]\\n ]+", " ")
-    jsonlite::fromJSON(txt)
+    out <- jsonlite::fromJSON(txt)
+    class(out) <- c("gdns_response", "list")
+    out
   } else {
     NULL
   }
 
 }
+
+#' @rdname query
+#' @export
+dig <- query

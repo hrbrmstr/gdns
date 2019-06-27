@@ -2,9 +2,14 @@
 % Please edit documentation in R/zgdns.r
 \name{query}
 \alias{query}
+\alias{dig}
 \title{Perform DNS over HTTPS queries using Google}
 \usage{
-query(name, type = "1", edns_client_subnet = "0.0.0.0/0")
+query(name, type = "1", cd = FALSE, do = FALSE,
+  edns_client_subnet = "0.0.0.0/0", random_padding = NULL)
+
+dig(name, type = "1", cd = FALSE, do = FALSE,
+  edns_client_subnet = "0.0.0.0/0", random_padding = NULL)
 }
 \arguments{
 \item{name}{item to lookup. Valid characters are numbers, letters, hyphen, and dot. Length
@@ -19,6 +24,12 @@ string (A, aaaa, etc). More information on RR types can be
 found \href{http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4}{here}.
 You can use \code{255} for an \code{ANY} query.}
 
+\item{cd}{(Checking Disabled) flag. Use `TRUE` to disable DNSSEC validation;
+Default: `FALSE`.}
+
+\item{do}{(DNSSEC OK) flag. Use `TRUE` include DNSSEC records (RRSIG, NSEC, NSEC3);
+Default: `FALSE`.}
+
 \item{edns_client_subnet}{The edns0-client-subnet option. Format is an IP
 address with a subnet mask. Examples: \code{1.2.3.4/24},
 \code{2001:700:300::/48}.\cr
@@ -28,6 +39,13 @@ nameservers for geographic location accuracy, use
 \code{edns_client_subnet=0.0.0.0/0}. Google Public DNS normally sends
 approximate network information (usually replacing the last part of
 your IPv4 address with zeroes). \code{0.0.0.0/0} is the default.}
+
+\item{random_padding}{clients concerned about possible side-channel privacy
+attacks using the packet sizes of HTTPS GET requests can use this to
+make all requests exactly the same size by padding requests with random data.
+To prevent misinterpretation of the URL, restrict the padding characters to
+the unreserved URL characters: upper- and lower-case letters, digits,
+hyphen, period, underscore and tilde.}
 }
 \value{
 a \code{list} with the query result or \code{NULL} if an error occurred
@@ -51,12 +69,12 @@ To perform vectorized queries with only answers (and no metadata) use
 }
 \examples{
 query("rud.is")
-query("example.com", "255") # ANY query
+dig("example.com", "255") # ANY query
 query("microsoft.com", "MX")
-query("google-public-dns-a.google.com", "TXT")
+dig("google-public-dns-a.google.com", "TXT")
 query("apple.com")
-query("17.142.160.59", "PTR")
+dig("17.142.160.59", "PTR")
 }
 \references{
-\url{https://developers.google.com/speed/public-dns/docs/dns-over-https}
+<https://developers.google.com/speed/public-dns/docs/doh/json>
 }
