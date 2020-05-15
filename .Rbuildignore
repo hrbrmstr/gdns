@@ -9,3 +9,4 @@
 ^tools$
 ^data-raw$
 ^LICENSE\.md$
+^appveyor\.yml$
