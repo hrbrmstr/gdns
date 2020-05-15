@@ -5,11 +5,12 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
 * This is a new release.
 
-- Addressed CRAN check failures.
+- Addressed CRAN check failures as per-CRAN email
+- Switched to MIT license
 - Added support for new google dns api params
 - Switched to tinytest
 - Added return types to all exported functions

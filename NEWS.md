@@ -2,6 +2,7 @@
 
 * Addressed CRAN check issues
 * Switched to tinytest
+* Switched to MIT license
 * Added support for 'dns-message' new content type
 
 # gdns 0.4.0
