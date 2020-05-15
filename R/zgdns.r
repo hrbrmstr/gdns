@@ -32,6 +32,10 @@ S_GET <- safely(httr::GET)
 #'        You can use \code{255} for an \code{ANY} query.
 #' @param cd (Checking Disabled) flag. Use `TRUE` to disable DNSSEC validation;
 #'        Default: `FALSE`.
+#' @param ct (Content Type) Desired content type option. Use `application/dns-message`
+#'        to receive a binary DNS message in the response HTTP body instead of JSON text.
+#'        Use `application/x-javascript` (the default) to explicitly request JSON text.
+#'         Other content type values are ignored and default JSON content is returned.
 #' @param do (DNSSEC OK) flag. Use `TRUE` include DNSSEC records (RRSIG, NSEC, NSEC3);
 #'        Default: `FALSE`.
 #' @param random_padding clients concerned about possible side-channel privacy
@@ -53,17 +57,25 @@ S_GET <- safely(httr::GET)
 #' @references <https://developers.google.com/speed/public-dns/docs/doh/json>
 #' @export
 #' @examples
-#' query("rud.is")
-#' dig("example.com", "255") # ANY query
-#' query("microsoft.com", "MX")
-#' dig("google-public-dns-a.google.com", "TXT")
-#' query("apple.com")
-#' dig("17.142.160.59", "PTR")
-query <- function(name, type = "1", cd = FALSE, do = FALSE,
-                  edns_client_subnet = "0.0.0.0/0",
+#' if (tinytest::at_home()) {
+#'   query("rud.is")
+#'   dig("example.com", "255") # ANY query
+#'   query("microsoft.com", "MX")
+#'   dig("google-public-dns-a.google.com", "TXT")
+#'   query("apple.com")
+#'   dig("17.142.160.59", "PTR")
+#' }
+query <- function(name, type = "1", cd = FALSE,
+                  ct = "application/x-javascript",
+                  do = FALSE, edns_client_subnet = "0.0.0.0/0",
                   random_padding = NULL) {
 
   name <- name[1]
+  cd <- cd[1]
+  ct <- ct[1]
+  do <- do[1]
+  edns_client_subnet <- edns_client_subnet[1]
+  random_padding <- random_padding[1]
 
   # helper to turn IPv4 addresses in to in-addr.arpa.
 
@@ -80,20 +92,40 @@ query <- function(name, type = "1", cd = FALSE, do = FALSE,
       type = type,
       cd = if (cd) 1 else 0,
       do = if (do) 1 else 0,
-      ct = "application/x-javascript",
+      ct = ct,
       edns_client_subnet = edns_client_subnet,
       random_padding = random_padding
     )
   )
 
   if (!is.null(res$result)) {
+
     stop_for_status(res$result)
-    txt <- httr::content(res$result, as="text")
-    txt <- stringi::stri_enc_toascii(txt)
-    txt <- stringi::stri_replace_all_regex(txt, "[[:cntrl:][:blank:]\\n ]+", " ")
-    out <- jsonlite::fromJSON(txt)
-    class(out) <- c("gdns_response", "list")
+
+    if (ct == "application/dns-message") {
+
+      out <- httr::content(res$result, as="raw")
+
+      class(out) <- c("gdns_raw_response", "list")
+
+      out
+
+
+    } else {
+
+      txt <- httr::content(res$result, as="text")
+
+      txt <- stringi::stri_enc_toascii(txt)
+      txt <- stringi::stri_replace_all_regex(txt, "[[:cntrl:][:blank:]\\n ]+", " ")
+
+      out <- jsonlite::fromJSON(txt)
+
+      class(out) <- c("gdns_response", "list")
+
+    }
+
     out
+
   } else {
     NULL
   }

@@ -4,7 +4,9 @@
 \name{dns_opcodes}
 \alias{dns_opcodes}
 \title{DNS OpCodes (dataset)}
-\format{data frame with columns: \code{op_code}, \code{name}, \code{reference}}
+\format{
+data frame with columns: \code{op_code}, \code{name}, \code{reference}
+}
 \usage{
 data('dns_opcodes')
 }

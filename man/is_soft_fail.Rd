@@ -15,6 +15,14 @@ passes_all(spf_rec)
 \arguments{
 \item{spf_rec}{a character vector of DNS TXT records}
 }
+\value{
+logical
+}
 \description{
 SPF "all" type test
+}
+\examples{
+is_soft_fail("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
+is_hard_fail("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
+passes_all("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
 }

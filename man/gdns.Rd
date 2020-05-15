@@ -3,7 +3,6 @@
 \docType{package}
 \name{gdns}
 \alias{gdns}
-\alias{gdns-package}
 \title{Tools to Work with Google DNS Over HTTPS API}
 \description{
 Traditional DNS queries and responses are sent over UDP or TCP without

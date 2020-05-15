@@ -4,8 +4,13 @@
 \alias{bulk_query}
 \title{Vectorized query, returning only answers in a data frame}
 \usage{
-bulk_query(entities, type = 1, cd = FALSE, do = FALSE,
-  edns_client_subnet = "0.0.0.0/0")
+bulk_query(
+  entities,
+  type = 1,
+  cd = FALSE,
+  do = FALSE,
+  edns_client_subnet = "0.0.0.0/0"
+)
 }
 \arguments{
 \item{entities}{character vector of entities to query}
@@ -42,8 +47,10 @@ this is a fairly naive function. It expects \code{Answer} to be one of the
       to do bulk forward queries. It will get smarter in future versions.
 }
 \examples{
-hosts <- c("rud.is", "r-project.org", "rstudio.com", "apple.com")
-gdns::bulk_query(hosts)
+if (tinytest::at_home()) {
+  hosts <- c("rud.is", "r-project.org", "rstudio.com", "apple.com")
+  gdns::bulk_query(hosts)
+}
 }
 \references{
 \url{https://developers.google.com/speed/public-dns/docs/dns-over-https}

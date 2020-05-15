@@ -24,8 +24,10 @@
 #'       return value list slots. The intent for it was to make it easier
 #'       to do bulk forward queries. It will get smarter in future versions.
 #' @examples
-#' hosts <- c("rud.is", "r-project.org", "rstudio.com", "apple.com")
-#' gdns::bulk_query(hosts)
+#' if (tinytest::at_home()) {
+#'   hosts <- c("rud.is", "r-project.org", "rstudio.com", "apple.com")
+#'   gdns::bulk_query(hosts)
+#' }
 bulk_query <- function(entities, type = 1, cd = FALSE, do = FALSE,
                        edns_client_subnet = "0.0.0.0/0") {
 

@@ -9,6 +9,12 @@ has_spf(spf_rec)
 \arguments{
 \item{spf_rec}{a character vector of DNS TXT records}
 }
+\value{
+character vector
+}
 \description{
 Test for whether a DNS TXT record is an SPF record
+}
+\examples{
+has_spf("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
 }

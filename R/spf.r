@@ -6,7 +6,10 @@
 #' functions).
 #'
 #' @param spf_rec a character vector of DNS TXT records
+#' @return list; each element is chr vector of spf components
 #' @export
+#' @examples
+#' split_spf("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
 split_spf <- function(spf_rec) {
   map(spf_rec, .split_spf)
 }
@@ -27,6 +30,9 @@ split_spf <- function(spf_rec) {
 #'
 #' @param spf_rec a character vector of DNS TXT records
 #' @export
+#' @return character vector
+#' @examples
+#' has_spf("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
 has_spf <- function(spf_rec) {
   grepl("v=spf1", spf_rec)
 }
@@ -35,6 +41,11 @@ has_spf <- function(spf_rec) {
 #'
 #' @param spf_rec a character vector of DNS TXT records
 #' @export
+#' @return logical
+#' @examples
+#' is_soft_fail("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
+#' is_hard_fail("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
+#' passes_all("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
 is_soft_fail <- function(spf_rec) {
   ret <- vector("logical", length(spf_rec))
   spf_rec <- stringi::stri_trim(stringi::stri_replace_all_regex(spf_rec, '"', ""))
@@ -72,6 +83,8 @@ passes_all <- function(spf_rec) {
 #'
 #' @param spf_rec a character vector of DNS TXT records
 #' @export
+#' @return list; each element is a character vector of the specified component
+#' spf_ipv4s("v=spf1 +mx ip4:214.3.140.16/32 ip4:214.3.140.255/32 ip4:214.3.115.12/32")
 spf_ipv4s <- function(spf_rec) {
   map(split_spf(spf_rec), function(x) {
     stringi::stri_replace_all_regex(grep("ip4", x, value=TRUE), "^ip4:", "")

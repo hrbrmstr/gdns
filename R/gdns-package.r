@@ -26,6 +26,7 @@
 #'                     stri_detect_fixed
 #' @importFrom jsonlite fromJSON
 #' @importFrom stats terms
+#' @importFrom tinytest at_home
 NULL
 
 

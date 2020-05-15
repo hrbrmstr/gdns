@@ -4,7 +4,9 @@
 \name{dns_glob_names}
 \alias{dns_glob_names}
 \title{Underscored and Globally Scoped DNS Node Names (dataset)}
-\format{data frame with columns: \code{rr_type}, \code{node_name}, \code{reference}}
+\format{
+data frame with columns: \code{rr_type}, \code{node_name}, \code{reference}
+}
 \usage{
 data('dns_glob_names')
 }

@@ -9,9 +9,15 @@ split_spf(spf_rec)
 \arguments{
 \item{spf_rec}{a character vector of DNS TXT records}
 }
+\value{
+list; each element is chr vector of spf components
+}
 \description{
 Given a vector of TXT records, this function will return a list of vectors
 of all the SPF records for each. If the given TXT record is not an SPF
 record, \code{NA} is returned (which makes it easy to skip with \code{purrr}
 functions).
+}
+\examples{
+split_spf("v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all")
 }

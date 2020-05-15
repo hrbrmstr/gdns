@@ -5,11 +5,25 @@
 \alias{dig}
 \title{Perform DNS over HTTPS queries using Google}
 \usage{
-query(name, type = "1", cd = FALSE, do = FALSE,
-  edns_client_subnet = "0.0.0.0/0", random_padding = NULL)
+query(
+  name,
+  type = "1",
+  cd = FALSE,
+  ct = "application/x-javascript",
+  do = FALSE,
+  edns_client_subnet = "0.0.0.0/0",
+  random_padding = NULL
+)
 
-dig(name, type = "1", cd = FALSE, do = FALSE,
-  edns_client_subnet = "0.0.0.0/0", random_padding = NULL)
+dig(
+  name,
+  type = "1",
+  cd = FALSE,
+  ct = "application/x-javascript",
+  do = FALSE,
+  edns_client_subnet = "0.0.0.0/0",
+  random_padding = NULL
+)
 }
 \arguments{
 \item{name}{item to lookup. Valid characters are numbers, letters, hyphen, and dot. Length
@@ -26,6 +40,11 @@ You can use \code{255} for an \code{ANY} query.}
 
 \item{cd}{(Checking Disabled) flag. Use `TRUE` to disable DNSSEC validation;
 Default: `FALSE`.}
+
+\item{ct}{(Content Type) Desired content type option. Use `application/dns-message`
+to receive a binary DNS message in the response HTTP body instead of JSON text.
+Use `application/x-javascript` (the default) to explicitly request JSON text.
+ Other content type values are ignored and default JSON content is returned.}
 
 \item{do}{(DNSSEC OK) flag. Use `TRUE` include DNSSEC records (RRSIG, NSEC, NSEC3);
 Default: `FALSE`.}
@@ -68,12 +87,14 @@ To perform vectorized queries with only answers (and no metadata) use
 \code{bulk_query()}).
 }
 \examples{
-query("rud.is")
-dig("example.com", "255") # ANY query
-query("microsoft.com", "MX")
-dig("google-public-dns-a.google.com", "TXT")
-query("apple.com")
-dig("17.142.160.59", "PTR")
+if (tinytest::at_home()) {
+  query("rud.is")
+  dig("example.com", "255") # ANY query
+  query("microsoft.com", "MX")
+  dig("google-public-dns-a.google.com", "TXT")
+  query("apple.com")
+  dig("17.142.160.59", "PTR")
+}
 }
 \references{
 <https://developers.google.com/speed/public-dns/docs/doh/json>

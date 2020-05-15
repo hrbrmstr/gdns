@@ -4,7 +4,9 @@
 \name{dns_classes}
 \alias{dns_classes}
 \title{DNS CLASSes (dataset)}
-\format{data frame with columns: \code{decimal}, \code{hexadecimal}, \code{name}, \code{reference}}
+\format{
+data frame with columns: \code{decimal}, \code{hexadecimal}, \code{name}, \code{reference}
+}
 \usage{
 data('dns_classes')
 }
@@ -12,7 +14,8 @@ data('dns_classes')
 DNS CLASSes
 }
 \note{
-As noted in , Multicast DNS can only carry DNS records with classes in the range 0-32767. Classes in the range 32768 to 65535 are incompatible with Multicast DNS.
+As noted in , Multicast DNS can only carry DNS records with classes in the range 0-32767.
+Classes in the range 32768 to 65535 are incompatible with Multicast DNS.
 
 Last updated 2019-06-27 11:16:48
 }

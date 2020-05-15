@@ -4,7 +4,9 @@
 \name{dns_rcodes}
 \alias{dns_rcodes}
 \title{DNS RCODEs (dataset)}
-\format{data frame with columns: \code{rcode}, \code{name}, \code{description}, \code{reference}}
+\format{
+data frame with columns: \code{rcode}, \code{name}, \code{description}, \code{reference}
+}
 \usage{
 data('dns_rcodes')
 }

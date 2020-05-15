@@ -1,3 +1,9 @@
+# gdns 0.5.0
+
+* Addressed CRAN check issues
+* Switched to tinytest
+* Added support for 'dns-message' new content type
+
 # gdns 0.4.0
 
 * Updated the JSON API endpoint per Google notification

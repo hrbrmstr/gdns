@@ -4,13 +4,15 @@
 \name{resource_record_tbl}
 \alias{resource_record_tbl}
 \title{An overview of resource records (RRs) permissible in zone files of the Domain Name System (DNS)}
-\format{A data frame with 39 rows and 4 variables:
+\format{
+A data frame with 39 rows and 4 variables:
 \describe{
   \item{type}{numeric type of the resource record}
   \item{name}{short name of the resource record}
   \item{description}{short description of the resource record}
   \item{purpose}{long-form description of the resource record purpose/function/usage}
-}}
+}
+}
 \source{
 \url{https://en.wikipedia.org/wiki/List_of_DNS_record_types}
 }

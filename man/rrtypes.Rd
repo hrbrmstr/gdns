@@ -4,7 +4,9 @@
 \name{rrtypes}
 \alias{rrtypes}
 \title{Resource Record (RR) TYPEs (dataset)}
-\format{data frame with columns: \code{type}, \code{value}, \code{meaning}, \code{reference}, \code{template}, \code{registration_date}}
+\format{
+data frame with columns: \code{type}, \code{value}, \code{meaning}, \code{reference}, \code{template}, \code{registration_date}
+}
 \usage{
 data('rrtypes')
 }

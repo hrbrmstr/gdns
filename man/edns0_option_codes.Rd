@@ -4,7 +4,9 @@
 \name{edns0_option_codes}
 \alias{edns0_option_codes}
 \title{DNS EDNS0 Option Codes (OPT) (dataset)}
-\format{data frame with columns: \code{value}, \code{name}, \code{status}, \code{reference}}
+\format{
+data frame with columns: \code{value}, \code{name}, \code{status}, \code{reference}
+}
 \usage{
 data('edns0_option_codes')
 }
@@ -12,7 +14,9 @@ data('edns0_option_codes')
 DNS EDNS0 Option Codes (OPT)
 }
 \note{
-Registrations made by standards-track documents are listed as "Standard," and by non-standards-track documents as "Optional." Registrations for which there are no final specifications are listed as "On-Hold."
+Registrations made by standards-track documents are listed as "Standard,"
+and by non-standards-track documents as "Optional." Registrations for
+which there are no final specifications are listed as "On-Hold."
 
 Last updated 2019-06-27 11:16:48
 }

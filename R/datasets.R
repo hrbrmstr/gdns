@@ -11,7 +11,8 @@
 #' @references <https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-2>
 #' @references <https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml>
 #' @references rfc6895
-#' @note As noted in , Multicast DNS can only carry DNS records with classes in the range 0-32767. Classes in the range 32768 to 65535 are incompatible with Multicast DNS.
+#' @note As noted in , Multicast DNS can only carry DNS records with classes in the range 0-32767.
+#'       Classes in the range 32768 to 65535 are incompatible with Multicast DNS.
 #' @note Last updated 2019-06-27 11:16:48
 #' @usage data('dns_classes')
 NULL
@@ -68,7 +69,9 @@ NULL
 #' @references <https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11>
 #' @references <https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml>
 #' @references rfc6891, 3604
-#' @note Registrations made by standards-track documents are listed as "Standard," and by non-standards-track documents as "Optional." Registrations for which there are no final specifications are listed as "On-Hold."    
+#' @note Registrations made by standards-track documents are listed as "Standard,"
+#'       and by non-standards-track documents as "Optional." Registrations for
+#'       which there are no final specifications are listed as "On-Hold."
 #' @note Last updated 2019-06-27 11:16:48
 #' @usage data('edns0_option_codes')
 NULL
